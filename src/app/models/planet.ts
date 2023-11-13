@@ -1,14 +1,15 @@
 export enum PlanetStatus {
-  OK = 'OK',
-  NOT_OK = '!OK',
-  TODO = 'TODO',
-  EN_ROUTE = 'EN_ROUTE'
+  TODO = '0',
+  EN_ROUTE = '1',
+  OK = '2',
+  NOT_OK = '3'
 }
-
 
 export interface Planet {
   id: string,
   name: string,
   description: string,
   status: PlanetStatus,
+  captain: string
 }
+

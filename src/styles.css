@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.btn-custom {
+  background-color: #A25460;
+  color: white;
+  width: 30vh;
+  margin-top: 4vh;
+}
+
+.btn-custom:hover{
+  background-color: #8f4749;
+  color: white;
+}
+
+.btn-custom:disabled{
+  background-color: #A25460;
+  color: white;
+}

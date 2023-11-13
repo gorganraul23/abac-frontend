@@ -1,1 +1,52 @@
-<p>edit-planet works!</p>
+<div class="container">
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 text-center mb-4">
+      <h1>Update planet</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-6">
+
+      <form #form="ngForm" (ngSubmit)="updatePlanet()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control bg-light" id="name" name="name" readonly
+                 [(ngModel)]="updatePlanetRequest.name">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" name="description"
+                 [disabled]="isDisabledInput()"
+                 [(ngModel)]="updatePlanetRequest.description">
+        </div>
+
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <select class="form-select" id="status" name="status" [ngModel]="updatePlanetRequest.status"
+                  (change)="onStatusChange($event)">
+            <option value=0>TODO</option>
+            <option value=1>EnRoute</option>
+            <option value=2>OK</option>
+            <option value=3>!OK</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="captain" class="form-label">Captain</label>
+          <select class="form-select" id="captain" name="captain" [ngModel]="updatePlanetRequest.captain"
+                  (change)="onCaptainChange($event)" [disabled]="isDisabledInput()">
+            <option *ngFor="let explorer of this.captains" value="{{explorer.id}}">{{explorer.name}}</option>
+          </select>
+        </div>
+
+        <div class="button">
+          <button type="submit" class="btn btn-custom" [disabled]="isFormInvalid()">Update</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

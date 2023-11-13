@@ -18,7 +18,7 @@ const routes: Routes = [
     component: AddPlanetComponent
   },
   {
-    path: 'planets/edit',
+    path: 'planets/edit/:id',
     component: EditPlanetComponent
   },
 ];

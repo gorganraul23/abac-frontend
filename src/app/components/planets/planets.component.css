@@ -1,4 +1,53 @@
-.btn-custom {
-  background-color: #8f4749;
-  color: white; /* Set the text color to ensure contrast */
+.add-button{
+  justify-content: center;
+  display: flex;
+  margin-top: 4vh;
+}
+
+.bold {
+  font-size: small;
+  font-weight: bold;
+}
+
+.normal-text {
+  font-size: small;
+  text-decoration: underline;
+}
+
+.name{
+  font-size: large;
+}
+
+.responsive-image {
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  display: block;
+}
+
+.not-available{
+  font-size: medium;
+}
+
+.card-body.text-right {
+  padding-left: 0;
+}
+
+.card-container {
+  margin-top: 4vh; /* Space before the first card */
+  margin-bottom: 5vh; /* Space after the last card */
+}
+
+.card {
+  margin: 2vh; /* Space between cards */
+}
+
+.card-body{
+  padding: 0;
+}
+
+.image-div{
+  display: inline-grid;
+  justify-items: center;
+  justify-content: center;
 }
