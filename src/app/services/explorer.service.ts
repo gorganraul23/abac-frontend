@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Explorer, ExplorerType} from "../models/explorer";
+import {Explorer} from "../models/explorer";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class ExplorerService {
   constructor(private http: HttpClient) {
   }
 
-  getExplorersByType(type: ExplorerType): Observable<Explorer[]> {
-    return this.http.get<Explorer[]>(this.baseApiUrl + "/api/explorer/type/" + type);
+  getExplorers(): Observable<Explorer[]> {
+    return this.http.get<Explorer[]>(this.baseApiUrl + "/api/explorer");
   }
 
   getExplorersById(id: string): Observable<Explorer> {

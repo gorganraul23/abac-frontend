@@ -1,7 +1,7 @@
 .add-button{
   justify-content: center;
   display: flex;
-  margin-top: 4vh;
+  margin-top: 1vh;
 }
 
 .bold {
@@ -21,12 +21,12 @@
 .responsive-image {
   width: auto;
   height: auto;
-  max-width: 40%;
+  max-width: 50%;
   display: block;
 }
 
 .not-available{
-  font-size: medium;
+  font-size: 1rem;
 }
 
 .card-body.text-right {
@@ -40,6 +40,7 @@
 
 .card {
   margin: 2vh; /* Space between cards */
+  border: 1px solid lightgray;
 }
 
 .card-body{
@@ -49,5 +50,25 @@
 .image-div{
   display: inline-grid;
   justify-items: center;
-  justify-content: center;
+}
+
+.col-3{
+  height: 20vh;
+}
+
+.container{
+  margin: 15vh 0 0 0;
+  overflow-y: auto;
+  height: calc(100vh - 15vh);
+  min-width: 100%;
+}
+
+.bottom-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.card-text.description {
+  margin-bottom: 10px;
 }

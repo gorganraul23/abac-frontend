@@ -18,10 +18,14 @@ export class EditPlanetComponent implements OnInit {
     description: '',
     status: PlanetStatus.TODO,
     captain: '',
+    imagePath: ''
   };
 
   captains: Explorer[] = [];
-  robots: Explorer[] = []
+  robots: Explorer[] = [];
+  selectedRobots: string[] = [];
+  selectedRobotId: string = '';
+  initialStatus: PlanetStatus = PlanetStatus.TODO;
 
   constructor(private route: ActivatedRoute, private planetService: PlanetService, private router: Router,
               private explorerService: ExplorerService) {
@@ -37,21 +41,22 @@ export class EditPlanetComponent implements OnInit {
             .subscribe({
               next: (response) => {
                 this.updatePlanetRequest = response;
+                this.initialStatus = response.status
                 console.log(this.updatePlanetRequest);
               }
             })
         }
-        this.explorerService.getExplorersByType(ExplorerType.Captain)
+        this.explorerService.getExplorers()
           .subscribe({
             next: (response) => {
               console.log(response);
-              this.captains = response;
+              this.captains = response.filter(explorer => explorer.type == ExplorerType.Captain);
+              this.robots = response.filter(explorer => explorer.type == ExplorerType.Robot);
             },
             error: (response) => {
               console.log(response);
             }
           })
-
       }
     });
   }
@@ -70,11 +75,12 @@ export class EditPlanetComponent implements OnInit {
       })
   }
 
-  isDisabledInput() {
-    return this.updatePlanetRequest.status == PlanetStatus.TODO || this.updatePlanetRequest.status == PlanetStatus.EN_ROUTE;
-  }
-
   onStatusChange(event: any) {
+    if (this.initialStatus == PlanetStatus.TODO || this.initialStatus == PlanetStatus.EN_ROUTE)
+      if (event.target.value == PlanetStatus.TODO || event.target.value == PlanetStatus.EN_ROUTE) {
+        this.updatePlanetRequest.description = '';
+        this.updatePlanetRequest.captain = '';
+      }
     this.updatePlanetRequest.status = event.target.value;
     this.isFormInvalid();
   }
@@ -83,10 +89,31 @@ export class EditPlanetComponent implements OnInit {
     this.updatePlanetRequest.captain = event.target.value;
   }
 
+  onRobotsChange(event: any) {
+    this.selectedRobotId = event.target.value;
+  }
+
+  addSelectedRobot() {
+    this.selectedRobots.push(this.selectedRobotId);
+    console.log(this.selectedRobots);
+  }
+
+  isRobotDisabled(id: string) {
+    return this.selectedRobots.includes(id);
+  }
+
   isFormInvalid() {
     const statusOKorNotOK = this.updatePlanetRequest.status === PlanetStatus.OK || this.updatePlanetRequest.status === PlanetStatus.NOT_OK;
-    const isDescriptionEmpty = this.updatePlanetRequest.description === '';
-
-    return statusOKorNotOK && isDescriptionEmpty;
+    const areFieldsEmpty = this.updatePlanetRequest.description == null || this.updatePlanetRequest.captain == null;
+    return statusOKorNotOK && areFieldsEmpty;
   }
+
+  isAlreadyVisited() {
+    return this.initialStatus == PlanetStatus.OK || this.initialStatus == PlanetStatus.NOT_OK;
+  }
+
+  isDisabledInput() {
+    return this.updatePlanetRequest.status == PlanetStatus.TODO || this.updatePlanetRequest.status == PlanetStatus.EN_ROUTE;
+  }
+
 }

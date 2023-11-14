@@ -2,3 +2,15 @@
   justify-content: center;
   display: flex;
 }
+
+.container{
+  margin: 15vh 0 0 0;
+  overflow-y: auto;
+  height: 100vh;
+  min-width: 100%;
+}
+
+.btn-custom {
+  width: 15vh;
+  margin-top: 0;
+}

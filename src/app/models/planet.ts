@@ -10,6 +10,7 @@ export interface Planet {
   name: string,
   description: string,
   status: PlanetStatus,
-  captain: string
+  captain: string,
+  imagePath: string
 }
 

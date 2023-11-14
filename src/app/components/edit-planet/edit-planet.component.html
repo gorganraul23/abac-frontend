@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mt-4">
     <div class="col-12 text-center mb-4">
       <h1>Update planet</h1>
     </div>
@@ -18,7 +18,7 @@
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <input type="text" class="form-control" id="description" name="description"
-                 [disabled]="isDisabledInput()"
+                 [disabled]="isDisabledInput()" maxlength="100"
                  [(ngModel)]="updatePlanetRequest.description">
         </div>
 
@@ -26,8 +26,8 @@
           <label for="status" class="form-label">Status</label>
           <select class="form-select" id="status" name="status" [ngModel]="updatePlanetRequest.status"
                   (change)="onStatusChange($event)">
-            <option value=0>TODO</option>
-            <option value=1>EnRoute</option>
+            <option value=0 [disabled]="isAlreadyVisited()">TODO</option>
+            <option value=1 [disabled]="isAlreadyVisited()">EnRoute</option>
             <option value=2>OK</option>
             <option value=3>!OK</option>
           </select>
@@ -36,9 +36,32 @@
         <div class="mb-3">
           <label for="captain" class="form-label">Captain</label>
           <select class="form-select" id="captain" name="captain" [ngModel]="updatePlanetRequest.captain"
-                  (change)="onCaptainChange($event)" [disabled]="isDisabledInput()">
-            <option *ngFor="let explorer of this.captains" value="{{explorer.id}}">{{explorer.name}}</option>
+                  (change)="onCaptainChange($event)" [disabled]="isDisabledInput()"
+                  onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+            <option *ngFor="let captain of this.captains" value="{{captain.id}}">{{captain.name}}</option>
           </select>
+        </div>
+
+        <!--        <div class="mb-3">-->
+        <!--          <label for="robots" class="form-label">Robots</label>-->
+        <!--          <select class="form-select" id="robots" name="robots"-->
+        <!--                  [ngModel]="this.selectedRobots" (change)="onRobotsChange($event)">-->
+        <!--            <option *ngFor="let robot of this.robots" value="{{robot.id}}">{{robot.name}}</option>-->
+        <!--          </select>-->
+        <!--        </div>-->
+
+        <div class="mb-3">
+          <label for="robots" class="form-label">Robots</label>
+          <div class="input-group">
+            <select class="form-select" id="robots" name="robots"
+                    onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'
+                    (change)="onRobotsChange($event)" [(ngModel)]="selectedRobotId">
+              <option *ngFor="let robot of this.robots" value="{{robot.id}}" [disabled]="isRobotDisabled(robot.id)">
+                {{robot.name}}
+              </option>
+            </select>
+            <button class="btn btn-custom" type="button" (click)="addSelectedRobot()">Add</button>
+          </div>
         </div>
 
         <div class="button">

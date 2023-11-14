@@ -15,13 +15,14 @@ export class AddPlanetComponent {
     name: '',
     description: '',
     status: PlanetStatus.TODO,
-    captain: ''
+    captain: '',
+    imagePath: ''
   };
 
   constructor(private planetService: PlanetService, private router: Router) {
   }
 
-  addPlanet(){
+  addPlanet() {
     this.planetService.addPlanet(this.newPlanet)
       .subscribe({
         next: (product) => {
@@ -34,6 +35,13 @@ export class AddPlanetComponent {
   }
 
   isEmpty() {
-    return this.newPlanet.name == '';
+    return this.newPlanet.name == '' || this.newPlanet.imagePath == '';
   }
+
+  onImagePathChange(event: any) {
+    const fullPath = event.target.value;
+    const parts = fullPath.split("\\");
+    this.newPlanet.imagePath = parts[parts.length - 1];
+  }
+
 }
