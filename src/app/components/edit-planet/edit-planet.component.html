@@ -42,18 +42,10 @@
           </select>
         </div>
 
-        <!--        <div class="mb-3">-->
-        <!--          <label for="robots" class="form-label">Robots</label>-->
-        <!--          <select class="form-select" id="robots" name="robots"-->
-        <!--                  [ngModel]="this.selectedRobots" (change)="onRobotsChange($event)">-->
-        <!--            <option *ngFor="let robot of this.robots" value="{{robot.id}}">{{robot.name}}</option>-->
-        <!--          </select>-->
-        <!--        </div>-->
-
         <div class="mb-3">
           <label for="robots" class="form-label">Robots</label>
           <div class="input-group">
-            <select class="form-select" id="robots" name="robots"
+            <select class="form-select" id="robots" name="robots" [disabled]="isDisabledInput()"
                     onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'
                     (change)="onRobotsChange($event)" [(ngModel)]="selectedRobotId">
               <option *ngFor="let robot of this.robots" value="{{robot.id}}" [disabled]="isRobotDisabled(robot.id)">

@@ -1,36 +1,31 @@
-.add-button{
+.container {
+  margin: 15vh 0 0 0;
+  overflow-y: auto;
+  height: calc(100vh - 15vh);
+  min-width: 100%;
+}
+
+.add-button {
   justify-content: center;
   display: flex;
   margin-top: 1vh;
 }
 
-.bold {
-  font-size: small;
+.bold-captain, .bold-robots {
   font-weight: bold;
 }
 
-.normal-text {
+.bold-captain{
+  font-size: x-small;
+}
+
+.underline-text {
   font-size: small;
   text-decoration: underline;
 }
 
-.name{
-  font-size: large;
-}
-
-.responsive-image {
-  width: auto;
-  height: auto;
-  max-width: 50%;
-  display: block;
-}
-
-.not-available{
+.not-available {
   font-size: 1rem;
-}
-
-.card-body.text-right {
-  padding-left: 0;
 }
 
 .card-container {
@@ -39,36 +34,124 @@
 }
 
 .card {
-  margin: 2vh; /* Space between cards */
+  margin: 2vh;
   border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
 }
 
-.card-body{
+.card-body {
   padding: 0;
-}
-
-.image-div{
-  display: inline-grid;
+  justify-content: center;
   justify-items: center;
 }
 
-.col-3{
+.card-body.text-right {
+  padding: 1vh 0 0 0;
+}
+
+.first-column-body {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.image-div {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  max-height: 20vh;
+}
+
+.responsive-image {
+  width: auto;
+  max-height: 15vh;
+  margin: 0 auto;
+}
+
+.col-3, .col-6 {
   height: 20vh;
+  max-height: 20vh;
 }
 
-.container{
-  margin: 15vh 0 0 0;
-  overflow-y: auto;
-  height: calc(100vh - 15vh);
-  min-width: 100%;
+.col-3{
+  padding: 0 0 0 6%;
 }
 
-.bottom-info {
+.col-6{
+  padding: 0 2vh 0 2vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-evenly;
 }
 
-.card-text.description {
-  margin-bottom: 10px;
+.captain{
+  margin: 0;
 }
+
+.status{
+  padding: 1vh;
+}
+
+.name {
+  font-size: medium;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* planet name */
+@media only screen and (max-width: 767px) {
+  .name {
+    max-width: 7ch;
+  }
+}
+
+/* robots */
+@media only screen and (max-width: 767px) {
+  .robots {
+    font-size: small;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .robots {
+    font-size: medium;
+  }
+}
+
+/* captain */
+@media only screen and (max-width: 767px) {
+  .captain {
+    font-size: x-small;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .captain {
+    font-size: small;
+  }
+}
+
+/* status */
+@media only screen and (max-width: 767px) {
+  .status-size {
+    font-size: x-small;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .status-size {
+    font-size: large;
+  }
+}
+
+/* description */
+@media only screen and (max-width: 767px) {
+  .not-available, .description {
+    font-size: small;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .not-available, .description {
+    font-size: large;
+  }
+}
+

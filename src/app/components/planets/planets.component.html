@@ -10,9 +10,9 @@
 
         <div class="col-3 col-md-3 d-flex align-items-center justify-content-center">
           <div class="image-div">
-            <img src="assets/{{planet.imagePath}}" class="card-img responsive-image" alt="Planet Image">
-            <div class="card-body">
-              <h6 class="card-title name"><b>{{planet.name}}</b></h6>
+            <img src="assets/{{planet.imagePath}}" class="card-img img-fluid responsive-image" alt="Planet Image">
+            <div class="first-column-body">
+              <h6 class="name"><b>{{planet.name}}</b></h6>
             </div>
           </div>
         </div>
@@ -20,11 +20,13 @@
         <!-- Second Column -->
         <div class="col-6 col-md-6" *ngIf="planet.description">
           <div class="card-body text-right">
-            <p class="card-text">"{{planet.description}}"</p>
+            <p class="card-text description">"{{planet.description}}"</p>
           </div>
-          <div>
-            <p><span class="bold">by captain: </span> <span class="normal-text">{{planet.captain}}</span></p>
-            <p><b>Robots:</b></p>
+          <div class="explorers">
+            <p class="captain"><span class="bold-captain">by captain: </span> <span class="underline-text">{{planet.captain}}</span></p>
+            <div class="robots">
+              <p><span class="bold-robots">Robots: </span>{{ getFormattedRobotList(planet.robots) }}</p>
+            </div>
           </div>
         </div>
 
@@ -33,11 +35,11 @@
         </div>
 
         <!-- Third Column -->
-        <div class="col-3 col-md-3 d-flex align-items-center">
+        <div class="col-3 col-md-3 d-flex align-items-center status">
 
           <div style="text-align: center;">
             <div class="card-body">
-              <div [ngSwitch]="planet.status">
+              <div [ngSwitch]="planet.status" class="status-size">
                 <span *ngSwitchCase="0" style="color: blue"><b>TODO</b></span>
                 <span *ngSwitchCase="1" style="color: grey"><b>En route</b></span>
                 <span *ngSwitchCase="2" style="color: limegreen"><b>OK</b></span>
@@ -51,41 +53,6 @@
     </div>
 
   </div>
-
-  <!--    <div class="card-container row" *ngFor="let planet of planets" (click)="goToEdit(planet.id)">-->
-  <!--      <div class="col-3 d-flex align-items-center justify-content-center">-->
-  <!--        &lt;!&ndash; First Column &ndash;&gt;-->
-  <!--        <div class="image-div">-->
-  <!--          <img src="assets/planet2.jfif" class="card-img responsive-image" alt="Planet Image">-->
-  <!--          <div class="card-body">-->
-  <!--            <h6 class="card-title name"><b>{{planet.name}}</b></h6>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-
-  <!--      &lt;!&ndash; Second Column &ndash;&gt;-->
-  <!--      <div class="col-6" [ngClass]="{'col-md-6': planet.description, 'col-md-5': !planet.description}">-->
-  <!--        <div class="card-body text-right">-->
-  <!--          <p class="card-text" *ngIf="planet.description">"{{planet.description}}"</p>-->
-  <!--          <p *ngIf="!planet.description" class="not-available">No description yet :/</p>-->
-  <!--          <p><span class="bold">by captain: </span> <span class="normal-text">{{planet.captain}}</span></p>-->
-  <!--          <p><b>Robots:</b></p>-->
-  <!--        </div>-->
-  <!--      </div>-->
-
-  <!--      &lt;!&ndash; Third Column &ndash;&gt;-->
-  <!--      <div class="col d-flex align-items-center">-->
-  <!--        <div class="card-body">-->
-  <!--          <div [ngSwitch]="planet.status">-->
-  <!--            <span *ngSwitchCase="0" style="color: blue"><b>TODO</b></span>-->
-  <!--            <span *ngSwitchCase="1" style="color: grey"><b>EnRoute</b></span>-->
-  <!--            <span *ngSwitchCase="2" style="color: limegreen"><b>OK</b></span>-->
-  <!--            <span *ngSwitchCase="3" style="color: red"><b>!OK</b></span>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
 
   <div>
     <p *ngIf="!planets || planets.length == 0">No planets available...</p>

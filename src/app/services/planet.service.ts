@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Planet} from '../models/planet';
+import {Planet, PlanetToAdd} from '../models/planet';
 
 @Injectable({
   providedIn: 'root'
@@ -17,17 +17,17 @@ export class PlanetService {
     return this.http.get<Planet[]>(this.baseApiUrl + "/api/planets");
   }
 
-  addPlanet(newProduct: Planet): Observable<Planet> {
-    newProduct.id = '00000000-0000-0000-0000-000000000000';  //empty guid
-    return this.http.post<Planet>(this.baseApiUrl + "/api/planets", newProduct);
+  addPlanet(newPlanet: PlanetToAdd): Observable<PlanetToAdd> {
+    newPlanet.id = '00000000-0000-0000-0000-000000000000';  //empty guid
+    return this.http.post<PlanetToAdd>(this.baseApiUrl + "/api/planets", newPlanet);
   }
 
   getPlanetById(id: string): Observable<Planet> {
     return this.http.get<Planet>(this.baseApiUrl + "/api/planets/" + id);
   }
 
-  updatePlanet(id: string, updateProductRequest: Planet): Observable<Planet> {
-    return this.http.put<Planet>(this.baseApiUrl + "/api/planets/" + id, updateProductRequest);
+  updatePlanet(id: string, updatePlanetRequest: Planet): Observable<Planet> {
+    return this.http.put<Planet>(this.baseApiUrl + "/api/planets/" + id, updatePlanetRequest);
   }
 
   deletePlanet(id: string): Observable<Planet> {

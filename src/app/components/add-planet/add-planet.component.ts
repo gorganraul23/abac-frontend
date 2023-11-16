@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Planet, PlanetStatus} from "../../models/planet";
+import {PlanetStatus, PlanetToAdd} from "../../models/planet";
 import {PlanetService} from "../../services/planet.service";
 import {Router} from "@angular/router";
 
@@ -10,12 +10,11 @@ import {Router} from "@angular/router";
 })
 export class AddPlanetComponent {
 
-  newPlanet: Planet = {
+  newPlanet: PlanetToAdd = {
     id: '',
     name: '',
     description: '',
     status: PlanetStatus.TODO,
-    captain: '',
     imagePath: ''
   };
 

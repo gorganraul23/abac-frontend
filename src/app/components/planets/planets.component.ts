@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Planet, PlanetStatus} from "../../models/planet";
+import {Planet} from "../../models/planet";
 import {PlanetService} from "../../services/planet.service";
 import {Router} from "@angular/router";
-import {ExplorerService} from "../../services/explorer.service";
 
 @Component({
   selector: 'app-planets',
@@ -13,7 +12,7 @@ export class PlanetsComponent implements OnInit {
 
   planets: Planet[] = [];
 
-  constructor(private planetService: PlanetService, private router: Router, private explorerService: ExplorerService) {
+  constructor(private planetService: PlanetService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,6 +33,17 @@ export class PlanetsComponent implements OnInit {
 
   goToEdit(id: string) {
     this.router.navigate(['planets', 'edit', id])
+  }
+
+  public getFormattedRobotList(list: string[]): string {
+    const maxRobotsToShow = 3;
+
+    if (list.length <= maxRobotsToShow) {
+      return list.map(robot => robot).join(', ');
+    } else {
+      const firstThreeRobots = list.slice(0, maxRobotsToShow).map(robot => robot).join(', ');
+      return `${firstThreeRobots}...`;
+    }
   }
 
 }
