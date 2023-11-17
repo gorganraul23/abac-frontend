@@ -15,17 +15,16 @@ Daca statusul initial este OK sau !OK, nu se mai poate schimba in TODO sau En ro
 
 Design-ul este responsive, functioneaza atat pe dispozitive mobile, tablete, laptop-uri cat si pe monitoare.
 
-Adaugarea capitanilor si a robotilor se face din Swagger.
-
 ## Backend
 
 Backend-ul este in .Net Core si folosesc Entity Framework pentru a mapa modelele la baza de date.
 Baza de date este in Microsoft SQL Server.
-Am 2 entitati, Planet si Explorer. Exporer are un type (Captain si Robot). Fiecare planeta are o lista de exploratori iar un explorator poate apartine mai multor planete.
+Am 2 entitati, Planet si Explorer. Explorer are un type (Captain si Robot). Fiecare planeta are o lista de exploratori iar un explorator poate apartine mai multor planete.
 Este realizata o mapare many-to-many intre cele 2 cu ajutorul clasei PlanetExplorer.
 
 Este de tipul REST API si include 2 controllere, unul pentru Exploreri si unul pentru Planete.
 
-
+Se face o populare initiala a bazei de date cu planete si exploratori, in clasele PlanetConfiguration si ExplorerConfiguration.
+Este nevoie de update-ul bazei de date ca sa cuprinda si aceasta migratie ca se creeze baza de date populata.
 
 
