@@ -15,6 +15,8 @@ Daca statusul initial este OK sau !OK, nu se mai poate schimba in TODO sau En ro
 
 Design-ul este responsive, functioneaza atat pe dispozitive mobile, tablete, laptop-uri cat si pe monitoare.
 
+Adaugarea capitanilor si a robotilor se face din Swagger.
+
 ## Backend
 
 Backend-ul este in .Net Core si folosesc Entity Framework pentru a mapa modelele la baza de date.

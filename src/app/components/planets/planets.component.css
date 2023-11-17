@@ -119,30 +119,6 @@
   }
 }
 
-/* very big screen */
-@media only screen and (min-width: 2560px) {
-  .name {
-    font-size: xxx-large;
-  }
-
-  .robots {
-    font-size: x-large;
-  }
-
-  .captain, .underline-text {
-    font-size: x-large;
-  }
-
-  .not-available, .description {
-    font-size: xx-large;
-  }
-
-  .status-size {
-    font-size: xx-large;
-  }
-}
-
-
 /* robots */
 @media only screen and (max-width: 767px) {
   .robots {
@@ -204,6 +180,49 @@
 @media only screen and (min-width: 768px) {
   .description {
     -webkit-line-clamp: 2
+  }
+}
+
+/* no planets in the list */
+@media only screen and (max-width: 767px) {
+  .no-planets {
+    font-size: small;
+    margin-left: 5vh;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1559px) {
+  .no-planets {
+    font-size: medium;
+    margin-left: 10vh;
+  }
+}
+
+/* very big screen */
+@media only screen and (min-width: 2560px) {
+  .name {
+    font-size: xxx-large;
+  }
+
+  .robots {
+    font-size: x-large;
+  }
+
+  .captain, .underline-text {
+    font-size: x-large;
+  }
+
+  .not-available, .description {
+    font-size: xx-large;
+  }
+
+  .status-size {
+    font-size: xx-large;
+  }
+
+  .no-planets{
+    margin-left: 10vh;
+    font-size: xxx-large;
   }
 }
 
