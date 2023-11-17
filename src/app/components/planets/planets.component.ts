@@ -36,7 +36,7 @@ export class PlanetsComponent implements OnInit {
   }
 
   public getFormattedRobotList(list: string[]): string {
-    const maxRobotsToShow = 3;
+    const maxRobotsToShow = 2;
 
     if (list.length <= maxRobotsToShow) {
       return list.map(robot => robot).join(', ');
