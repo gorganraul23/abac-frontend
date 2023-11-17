@@ -52,7 +52,9 @@
                 {{robot.name}}
               </option>
             </select>
-            <button class="btn btn-custom" type="button" (click)="addSelectedRobot()">Add</button>
+            <button class="btn btn-custom" type="button" (click)="addSelectedRobot()" [disabled]="!selectedRobotId">
+              Add
+            </button>
           </div>
         </div>
 
