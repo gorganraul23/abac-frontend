@@ -15,12 +15,11 @@
   font-weight: bold;
 }
 
-.bold-captain{
+.bold-captain {
   font-size: x-small;
 }
 
 .underline-text {
-  font-size: small;
   text-decoration: underline;
 }
 
@@ -74,28 +73,35 @@
   max-height: 20vh;
 }
 
-.col-3{
+.col-3 {
   padding: 0 0 0 6%;
 }
 
-.col-6{
+.col-6 {
   padding: 0 2vh 0 2vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.captain{
+.captain {
   margin: 0;
 }
 
-.status{
+.status {
   padding: 1vh;
 }
 
 .name {
   font-size: medium;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -107,12 +113,20 @@
   }
 }
 
+@media only screen and (min-width: 1440px) {
+  .name {
+    font-size: large;
+  }
+}
+
+
 /* robots */
 @media only screen and (max-width: 767px) {
   .robots {
     font-size: small;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .robots {
     font-size: medium;
@@ -121,12 +135,13 @@
 
 /* captain */
 @media only screen and (max-width: 767px) {
-  .captain {
+  .captain, .underline-text {
     font-size: x-small;
   }
 }
+
 @media only screen and (min-width: 768px) {
-  .captain {
+  .captain, .underline-text {
     font-size: small;
   }
 }
@@ -137,6 +152,7 @@
     font-size: x-small;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .status-size {
     font-size: large;
@@ -149,9 +165,22 @@
     font-size: small;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .not-available, .description {
     font-size: large;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .description {
+    -webkit-line-clamp: 3;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .description {
+    -webkit-line-clamp: 4;
   }
 }
 

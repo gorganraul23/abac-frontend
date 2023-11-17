@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {PlanetsComponent} from "./components/planets/planets.component";
 import {AddPlanetComponent} from "./components/add-planet/add-planet.component";
 import {EditPlanetComponent} from "./components/edit-planet/edit-planet.component";
@@ -7,7 +7,8 @@ import {EditPlanetComponent} from "./components/edit-planet/edit-planet.componen
 const routes: Routes = [
   {
     path: '',
-    component: PlanetsComponent
+    redirectTo: 'planets',
+    pathMatch: 'full'
   },
   {
     path: 'planets',
@@ -27,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

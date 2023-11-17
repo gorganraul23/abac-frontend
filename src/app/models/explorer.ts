@@ -3,7 +3,7 @@ export enum ExplorerType {
   Robot = '1',
 }
 
-export interface Explorer{
+export interface Explorer {
   id: string,
   name: string,
   type: ExplorerType

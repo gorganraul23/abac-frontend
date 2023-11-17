@@ -45,8 +45,6 @@ export class EditPlanetComponent implements OnInit {
                 this.updatePlanetRequest = response;
                 this.initialStatus = response.status;
                 this.initialCaptain = response.captain;
-                console.log(this.initialCaptain);
-                console.log(this.updatePlanetRequest);
               },
               error: (response) => {
                 console.log(response);
@@ -69,9 +67,6 @@ export class EditPlanetComponent implements OnInit {
 
 
   updatePlanet() {
-    console.log(this.updatePlanetRequest);
-    // if(this.initialCaptain == this.updatePlanetRequest.captain)
-    //   this.updatePlanetRequest.captain = '';
     this.updatePlanetRequest.robots = this.selectedRobots;
     this.planetService.updatePlanet(this.updatePlanetRequest.id, this.updatePlanetRequest)
       .subscribe({
@@ -89,7 +84,8 @@ export class EditPlanetComponent implements OnInit {
       if (event.target.value == PlanetStatus.TODO || event.target.value == PlanetStatus.EN_ROUTE) {
         this.updatePlanetRequest.description = '';
         this.updatePlanetRequest.captain = '';
-        this.selectedRobots = []
+        this.selectedRobots = [];
+        this.selectedRobotId = '';
       }
     this.updatePlanetRequest.status = event.target.value;
 
@@ -110,12 +106,13 @@ export class EditPlanetComponent implements OnInit {
         break;
     }
 
-    this.isFormInvalid();
+    this.isButtonDisabled();
   }
 
   onCaptainChange(event: any) {
     if (this.initialCaptain != event.target.value)
       this.updatePlanetRequest.captain = event.target.value;
+    this.isButtonDisabled();
   }
 
   onRobotsChange(event: any) {
@@ -124,31 +121,22 @@ export class EditPlanetComponent implements OnInit {
 
   addSelectedRobot() {
     this.selectedRobots.push(this.selectedRobotId);
-    console.log(this.selectedRobots);
   }
 
   isRobotDisabled(id: string) {
     return this.selectedRobots.includes(id) || this.updatePlanetRequest.robots.includes(id);
   }
 
-  isFormInvalid() {
-    // const statusOKorNotOK = this.updatePlanetRequest.status == PlanetStatus.OK || this.updatePlanetRequest.status == PlanetStatus.NOT_OK;
-    // const areFieldsEmpty = this.updatePlanetRequest.description == null || this.updatePlanetRequest.captain == null || this.selectedRobots.length == 0;
-    // return statusOKorNotOK && areFieldsEmpty;
+  isButtonDisabled(): boolean {
+    if (this.initialStatus == PlanetStatus.OK || this.initialStatus == PlanetStatus.NOT_OK)
+      return this.updatePlanetRequest.description == '';
 
-    if (this.isToDoOrEnRoute(this.initialStatus)) {
-      if (!this.isToDoOrEnRoute(this.updatePlanetRequest.status)) {
-        return this.updatePlanetRequest.description == null || this.updatePlanetRequest.captain == null || this.selectedRobots.length == 0;
-      }
-      else
-        return false;
-    } else
-      return false;
-  }
-
-  isToDoOrEnRoute(status: PlanetStatus) {
-    //console.log(status == PlanetStatus.TODO || PlanetStatus.EN_ROUTE);
-    return status == PlanetStatus.TODO || PlanetStatus.EN_ROUTE;
+    if ((this.updatePlanetRequest.status !== PlanetStatus.TODO && this.updatePlanetRequest.status !== PlanetStatus.EN_ROUTE)
+      && (this.updatePlanetRequest.description == ''
+        || this.selectedRobots.length == 0
+        || (this.updatePlanetRequest.captain == null || this.updatePlanetRequest.captain == '')))
+      return true;
+    return false;
   }
 
   isAlreadyVisited() {

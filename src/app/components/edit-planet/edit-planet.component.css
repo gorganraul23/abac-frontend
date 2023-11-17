@@ -1,9 +1,9 @@
-.button{
+.button {
   justify-content: center;
   display: flex;
 }
 
-.container{
+.container {
   margin: 15vh 0 0 0;
   overflow-y: auto;
   height: 100vh;
