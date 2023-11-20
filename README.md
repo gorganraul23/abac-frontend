@@ -12,6 +12,8 @@ Daca se atinge o planeta din lista, se intra pe pagina de Update.
 Daca statusul initial este TODO sau En route si se doreste mutarea in OK sau !OK, este nevoie de completarea tuturor campurilor.
 Pentru adaugarea de roboti, se selectaza un robot din lista si se apasa Add. Robotii care deja sunt inclusi in aceasta echipa sunt disabled din lista.
 Daca statusul initial este OK sau !OK, nu se mai poate schimba in TODO sau En route.
+Se poate adauga un capitan din lista si mai multi roboti. Este asigurat faptul ca o echipa are un singur capitan si mai multi roboti.
+
 
 Design-ul este responsive, functioneaza atat pe dispozitive mobile, tablete, laptop-uri cat si pe monitoare.
 
@@ -25,6 +27,6 @@ Este realizata o mapare many-to-many intre cele 2 cu ajutorul clasei PlanetExplo
 Este de tipul REST API si include 2 controllere, unul pentru Exploreri si unul pentru Planete.
 
 Se face o populare initiala a bazei de date cu planete si exploratori, in clasele PlanetConfiguration si ExplorerConfiguration.
-Este nevoie de update-ul bazei de date ca sa cuprinda si aceasta migratie ca se creeze baza de date populata.
+Este nevoie de update-ul bazei de date ca sa cuprinda si aceasta migratie astfel sa se creeze baza de date populata.
 
 
